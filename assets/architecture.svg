@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 900" font-family="'Helvetica Neue', Arial, 'DejaVu Sans', sans-serif">
+  <defs>
+    <marker id="arr"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#475569"/></marker>
+    <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#2563EB"/></marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#D97706"/></marker>
+    <marker id="arrP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#A855F7"/></marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#94A3B8"/></marker>
+  </defs>
+
+  <rect width="1280" height="900" fill="#FFFFFF"/>
+
+  <!-- Title -->
+  <text x="40" y="52" font-size="21" font-weight="700" fill="#0F172A">Offline-First Field Platform — System Architecture</text>
+  <text x="40" y="74" font-size="12.5" fill="#64748B">Reference architecture · Offline-First Field Applications Playbook (docs/01–12) · generic by design</text>
+
+  <!-- FCM push route (drawn under zones' labels but above bg) -->
+  <path d="M1135,150 V88 H190 V130" fill="none" stroke="#D97706" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrA)"/>
+  <text x="640" y="82" font-size="9.5" text-anchor="middle" stroke="#FFFFFF" stroke-width="3.5" fill="#FFFFFF">push notifications nudge devices to sync (docs/02)</text>
+  <text x="640" y="82" font-size="9.5" fill="#B45309" text-anchor="middle">push notifications nudge devices to sync (docs/02)</text>
+
+  <!-- ZONES -->
+  <rect x="40"   y="100" width="300" height="560" rx="14" fill="#EFF6FF"/>
+  <rect x="470"  y="100" width="270" height="150" rx="14" fill="#F0FDFA"/>
+  <rect x="770"  y="100" width="220" height="150" rx="14" fill="#FAF5FF"/>
+  <rect x="470"  y="280" width="530" height="380" rx="14" fill="#EEF2FF"/>
+  <rect x="1030" y="100" width="210" height="560" rx="14" fill="#FFF7ED"/>
+  <rect x="40"   y="700" width="1200" height="150" rx="14" fill="#F8FAFC" stroke="#E2E8F0"/>
+
+  <text x="64"   y="124" font-size="10.5" font-weight="700" letter-spacing="1.2" fill="#1D4ED8">FIELD · OFFLINE-FIRST MOBILE</text>
+  <text x="494"  y="124" font-size="10.5" font-weight="700" letter-spacing="1.2" fill="#0F766E">BACK OFFICE</text>
+  <text x="794"  y="124" font-size="10.5" font-weight="700" letter-spacing="1.2" fill="#7C3AED">DELIVERY</text>
+  <text x="494"  y="304" font-size="10.5" font-weight="700" letter-spacing="1.2" fill="#4338CA">BACKEND · ONE DEPLOYABLE</text>
+  <text x="1050" y="124" font-size="10.5" font-weight="700" letter-spacing="1.2" fill="#B45309">EXTERNAL</text>
+  <text x="64"   y="724" font-size="10.5" font-weight="700" letter-spacing="1.2" fill="#475569">OBSERVABILITY SIDECAR</text>
+
+  <!-- FIELD internals -->
+  <rect x="64" y="136" width="252" height="46" rx="8" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.4"/>
+  <text x="78" y="157" font-size="13.5" font-weight="700" fill="#0F172A">Mobile App — Flutter</text>
+  <text x="78" y="173" font-size="9.5" fill="#64748B">one codebase · iOS &amp; Android</text>
+
+  <rect x="64" y="194" width="252" height="42" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="78" y="212" font-size="12.5" font-weight="600" fill="#0F172A">UI — screens &amp; forms</text>
+  <text x="78" y="228" font-size="10.5" fill="#64748B">never awaits the network</text>
+
+  <rect x="64" y="248" width="252" height="42" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="78" y="266" font-size="12.5" font-weight="600" fill="#0F172A">State — Riverpod providers</text>
+  <text x="78" y="282" font-size="10.5" fill="#64748B">reads local DB only</text>
+
+  <rect x="64" y="302" width="252" height="50" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="78" y="322" font-size="12.5" font-weight="600" fill="#0F172A">Local DB — Drift (SQLite)</text>
+  <text x="78" y="338" font-size="10.5" fill="#64748B">records · drafts · master-data cache</text>
+
+  <rect x="64" y="364" width="252" height="50" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="78" y="384" font-size="12.5" font-weight="600" fill="#0F172A">Outbox — durable op queue</text>
+  <text x="78" y="400" font-size="10.5" fill="#64748B">op_id = idempotency key · same txn</text>
+
+  <rect x="64" y="426" width="252" height="50" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="78" y="446" font-size="12.5" font-weight="600" fill="#0F172A">Sync Engine — background drain</text>
+  <text x="78" y="462" font-size="10.5" fill="#64748B">backoff · parking · dependency order</text>
+
+  <rect x="64" y="488" width="120" height="46" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="124" y="507" font-size="11.5" font-weight="600" fill="#0F172A" text-anchor="middle">Image queue</text>
+  <text x="124" y="522" font-size="9.5" fill="#64748B" text-anchor="middle">compress · retry</text>
+
+  <rect x="196" y="488" width="120" height="46" rx="8" fill="#FFFFFF" stroke="#93C5FD"/>
+  <text x="256" y="507" font-size="11.5" font-weight="600" fill="#0F172A" text-anchor="middle">Offline auth</text>
+  <text x="256" y="522" font-size="9.5" fill="#64748B" text-anchor="middle">cached verifier</text>
+
+  <rect x="64" y="546" width="252" height="52" rx="10" fill="#F8FAFF" stroke="#60A5FA" stroke-dasharray="5 4"/>
+  <text x="190" y="567" font-size="11.5" font-weight="700" fill="#1D4ED8" text-anchor="middle">✈ Airplane-mode ready</text>
+  <text x="190" y="583" font-size="10" fill="#475569" text-anchor="middle">every write commits locally first — sync is eventual</text>
+
+  <line x1="190" y1="237" x2="190" y2="245" stroke="#60A5FA" stroke-width="1.4" marker-end="url(#arrB)"/>
+  <line x1="190" y1="291" x2="190" y2="299" stroke="#60A5FA" stroke-width="1.4" marker-end="url(#arrB)"/>
+  <line x1="190" y1="353" x2="190" y2="361" stroke="#60A5FA" stroke-width="1.4" marker-end="url(#arrB)"/>
+  <line x1="190" y1="415" x2="190" y2="423" stroke="#60A5FA" stroke-width="1.4" marker-end="url(#arrB)"/>
+
+  <!-- OFFICE internals -->
+  <rect x="494" y="140" width="222" height="90" rx="8" fill="#FFFFFF" stroke="#5EEAD4" stroke-width="1.4"/>
+  <text x="605" y="168" font-size="13" font-weight="700" fill="#0F172A" text-anchor="middle">Admin Portal — React + MUI</text>
+  <text x="605" y="188" font-size="10.5" fill="#64748B" text-anchor="middle">dashboards · approvals · master data</text>
+  <text x="605" y="204" font-size="10.5" fill="#64748B" text-anchor="middle">sync-warnings feed (docs/02·09)</text>
+
+  <!-- DELIVERY internals -->
+  <rect x="794" y="140" width="172" height="90" rx="8" fill="#FFFFFF" stroke="#D8B4FE" stroke-width="1.4"/>
+  <text x="880" y="164" font-size="13" font-weight="700" fill="#0F172A" text-anchor="middle">CI / CD</text>
+  <text x="880" y="184" font-size="10" fill="#64748B" text-anchor="middle">build → test → registry tag</text>
+  <text x="880" y="200" font-size="10" fill="#64748B" text-anchor="middle">promote staging → production</text>
+  <text x="880" y="216" font-size="10" fill="#64748B" text-anchor="middle">app tracks: internal → prod</text>
+  <path d="M880,230 V276" fill="none" stroke="#A855F7" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrP)"/>
+  <text x="890" y="258" font-size="9.5" fill="#7C3AED">deploys images (docs/08)</text>
+
+  <!-- BACKEND internals -->
+  <rect x="494" y="320" width="482" height="122" rx="10" fill="#FFFFFF" stroke="#A5B4FC" stroke-width="1.4"/>
+  <text x="510" y="344" font-size="14" font-weight="700" fill="#0F172A">API — FastAPI modular monolith</text>
+  <text x="510" y="372" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#94A3B8">DOMAINS</text>
+  <text x="572" y="372" font-size="11" fill="#334155">users · tenants · work orders · time entries · reports · master data · notifications</text>
+  <text x="510" y="396" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#94A3B8">SHARED</text>
+  <text x="572" y="396" font-size="11" fill="#334155">JWT + RBAC · tenancy chokepoint · idempotency · audit · jobs · files/PDF</text>
+  <text x="510" y="420" font-size="9.5" font-weight="700" letter-spacing="0.8" fill="#94A3B8">SYNC</text>
+  <text x="572" y="420" font-size="11" fill="#334155">dedicated /sync surface — push (idempotent) · pull (cursors) (docs/02·03)</text>
+
+  <!-- PostgreSQL cylinder -->
+  <path d="M494,486 a75,10 0 0,1 150,0 v44 a75,10 0 0,1 -150,0 z" fill="#FFFFFF" stroke="#A5B4FC" stroke-width="1.4"/>
+  <ellipse cx="569" cy="486" rx="75" ry="10" fill="#FFFFFF" stroke="#A5B4FC" stroke-width="1.4"/>
+  <text x="569" y="514" font-size="13" font-weight="700" fill="#0F172A" text-anchor="middle">PostgreSQL</text>
+  <text x="569" y="530" font-size="10" fill="#64748B" text-anchor="middle">row-level tenancy</text>
+
+  <rect x="664" y="478" width="120" height="56" rx="8" fill="#FFFFFF" stroke="#A5B4FC"/>
+  <text x="724" y="503" font-size="13" font-weight="700" fill="#0F172A" text-anchor="middle">Redis</text>
+  <text x="724" y="520" font-size="10" fill="#64748B" text-anchor="middle">cache · broker</text>
+
+  <rect x="804" y="478" width="172" height="56" rx="8" fill="#FFFFFF" stroke="#A5B4FC"/>
+  <text x="890" y="500" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">Workers — Celery</text>
+  <text x="890" y="517" font-size="9.5" fill="#64748B" text-anchor="middle">PDF · Excel · email · uploads</text>
+
+  <rect x="804" y="556" width="172" height="48" rx="8" fill="#FFFFFF" stroke="#A5B4FC"/>
+  <text x="890" y="576" font-size="12" font-weight="700" fill="#0F172A" text-anchor="middle">Scheduler — beat</text>
+  <text x="890" y="592" font-size="9.5" fill="#64748B" text-anchor="middle">single instance · overlap locks</text>
+
+  <rect x="494" y="556" width="270" height="48" rx="8" fill="#FFFFFF" stroke="#A5B4FC" stroke-dasharray="5 4"/>
+  <text x="629" y="576" font-size="10" font-weight="600" fill="#4338CA" text-anchor="middle">idempotency_records · same-txn insert</text>
+  <text x="629" y="592" font-size="10" fill="#64748B" text-anchor="middle">replays return the stored response (docs/03)</text>
+
+  <!-- Backend arrows -->
+  <line x1="605" y1="254" x2="605" y2="314" stroke="#475569" stroke-width="1.4" marker-end="url(#arr)"/>
+  <text x="615" y="288" font-size="10.5" fill="#475569">REST · JWT</text>
+
+  <line x1="569" y1="446" x2="569" y2="470" stroke="#475569" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="724" y1="446" x2="724" y2="472" stroke="#475569" stroke-width="1.4" marker-end="url(#arr)"/>
+  <line x1="788" y1="506" x2="798" y2="506" stroke="#475569" stroke-width="1.4" marker-end="url(#arr)"/>
+  <path d="M890,534 V550 H569 V542" fill="none" stroke="#475569" stroke-width="1.2" marker-end="url(#arr)"/>
+  <line x1="890" y1="556" x2="890" y2="540" stroke="#475569" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <!-- Sync arrows -->
+  <line x1="344" y1="382" x2="488" y2="382" stroke="#2563EB" stroke-width="2" marker-end="url(#arrB)"/>
+  <text x="416" y="370" font-size="10.5" font-weight="600" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" fill="#FFFFFF">PUSH /sync · Idempotency-Key</text>
+  <text x="416" y="370" font-size="10.5" font-weight="600" fill="#1D4ED8" text-anchor="middle">PUSH /sync · Idempotency-Key</text>
+  <line x1="488" y1="414" x2="344" y2="414" stroke="#2563EB" stroke-width="2" marker-end="url(#arrB)"/>
+  <text x="416" y="436" font-size="10.5" font-weight="600" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" fill="#FFFFFF">PULL · delta cursors · snapshots</text>
+  <text x="416" y="436" font-size="10.5" font-weight="600" fill="#1D4ED8" text-anchor="middle">PULL · delta cursors · snapshots</text>
+
+  <!-- External arrows -->
+  <line x1="976" y1="352" x2="1044" y2="190" stroke="#D97706" stroke-width="1.2" marker-end="url(#arrA)"/>
+  <line x1="976" y1="420" x2="1044" y2="285" stroke="#D97706" stroke-width="1.2" marker-end="url(#arrA)"/>
+  <line x1="976" y1="495" x2="1044" y2="385" stroke="#D97706" stroke-width="1.2" marker-end="url(#arrA)"/>
+  <line x1="976" y1="512" x2="1044" y2="485" stroke="#D97706" stroke-width="1.2" marker-end="url(#arrA)"/>
+
+  <!-- EXTERNAL internals -->
+  <rect x="1050" y="150" width="170" height="70" rx="8" fill="#FFFFFF" stroke="#FCD34D" stroke-width="1.4"/>
+  <text x="1135" y="178" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">Push — FCM</text>
+  <text x="1135" y="196" font-size="10" fill="#64748B" text-anchor="middle">sync nudges · alerts</text>
+
+  <rect x="1050" y="250" width="170" height="70" rx="8" fill="#FFFFFF" stroke="#FCD34D" stroke-width="1.4"/>
+  <text x="1135" y="278" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">Object storage</text>
+  <text x="1135" y="296" font-size="10" fill="#64748B" text-anchor="middle">photos · PDF artifacts</text>
+
+  <rect x="1050" y="350" width="170" height="70" rx="8" fill="#FFFFFF" stroke="#FCD34D" stroke-width="1.4"/>
+  <text x="1135" y="378" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">Email — SMTP</text>
+  <text x="1135" y="396" font-size="10" fill="#64748B" text-anchor="middle">per-tenant identity</text>
+
+  <rect x="1050" y="450" width="170" height="70" rx="8" fill="#FFFFFF" stroke="#FCD34D" stroke-width="1.4"/>
+  <text x="1135" y="478" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">Document store</text>
+  <text x="1135" y="496" font-size="10" fill="#64748B" text-anchor="middle">DMS / S3 adapter</text>
+
+  <text x="1135" y="560" font-size="9.5" font-style="italic" fill="#92400E" text-anchor="middle">adapters are swappable —</text>
+  <text x="1135" y="575" font-size="9.5" font-style="italic" fill="#92400E" text-anchor="middle">interfaces, not vendor lock-in</text>
+
+  <!-- OBSERVABILITY internals -->
+  <rect x="64" y="740" width="240" height="70" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="184" y="768" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">Prometheus</text>
+  <text x="184" y="786" font-size="10" fill="#64748B" text-anchor="middle">scrapes /metrics</text>
+
+  <rect x="324" y="740" width="240" height="70" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="444" y="768" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">Grafana</text>
+  <text x="444" y="786" font-size="10" fill="#64748B" text-anchor="middle">sync SLO dashboards · alerts</text>
+
+  <rect x="584" y="740" width="240" height="70" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="704" y="768" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="middle">Loki + promtail</text>
+  <text x="704" y="786" font-size="10" fill="#64748B" text-anchor="middle">structured logs · op_id correlation</text>
+
+  <text x="850" y="758" font-size="11" font-weight="700" fill="#334155">Sync SLOs (docs/09):</text>
+  <text x="850" y="776" font-size="10.5" fill="#475569">outbox depth · drain latency · park rate · 401 rate</text>
+  <text x="850" y="794" font-size="10.5" fill="#475569">op_id is the correlation id on both sides of the sync boundary</text>
+
+  <path d="M700,738 V668" fill="none" stroke="#94A3B8" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#arrG)"/>
+  <text x="710" y="700" font-size="9.5" fill="#64748B">scrape · ship logs</text>
+
+  <!-- Footer -->
+  <text x="40" y="884" font-size="9.5" fill="#94A3B8">Original reference architecture from the Offline-First Field Applications Playbook · CC BY 4.0 · depicts a generic pattern, not any specific production system</text>
+</svg>
