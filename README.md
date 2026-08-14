@@ -6,7 +6,7 @@ Field engineers work in basements, on rooftops, at remote industrial sites, and 
 
 This repository is my engineering playbook for that class of application: a full-stack architecture (API backend + admin web portal + offline-first mobile app) and the specific mechanisms — durable outboxes, end-to-end idempotency, per-data-class sync policies, conflict handling, observability — that make it hold up in production.
 
-> **Provenance & disclaimer.** This is a personal knowledge project. The patterns here generalize lessons from production field-service systems I have designed, built, and operated professionally. It contains **no proprietary source code, no client or employer material, and no confidential information** — every example, diagram, schema, and code sketch is original and generic. It is not affiliated with or endorsed by any employer or client.
+> **Provenance & disclaimer.** This is a personal knowledge project. The patterns here generalize lessons from production field-service systems I have designed, built, and operated professionally. It contains **no proprietary source code** — every example, diagram, schema, and code sketch is original and generic. It is not affiliated with or endorsed by any employer or client.
 
 ---
 
