@@ -41,7 +41,7 @@ Config is **pull-only master data** to devices (doc 02): cached locally, server-
 
 ## RBAC with layered inheritance
 
-Flat role→permission tables die quickly in real organizations: "all engineers can create service reports, except in tenant B where only seniors can, except Ali who's in a pilot." Model permissions as **layered overrides**:
+Flat role→permission tables die quickly in real organizations: "all engineers can create inspection reports, except in tenant B where only seniors can, except Ali who's in a pilot." Model permissions as **layered overrides**:
 
 ```
 effective(user, tenant, permission) =

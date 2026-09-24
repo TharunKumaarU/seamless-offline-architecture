@@ -1,10 +1,10 @@
 # 05 — Offline Document Numbering
 
-*Humans need `TN1-DN-2026-00417`, not a UUID — including humans with no signal.*
+*Humans need `TN1-DR-2026-00417`, not a UUID — including humans with no signal.*
 
 ## Why this is hard
 
-Business documents (delivery notes, service reports, invoices) need short, human-readable, often legally meaningful numbers: unique, roughly sequential, prefixed by tenant/type/year, and **printed on a signed PDF the moment the document is created** — which happens offline. So the classic answer, "the server assigns the number," is off the table for exactly the documents that matter most, and "wait for connectivity" means a customer standing at a loading dock, not signing.
+Business documents (dispatch records, inspection reports, invoices) need short, human-readable, often legally meaningful numbers: unique, roughly sequential, prefixed by tenant/type/year, and **printed on a signed PDF the moment the document is created** — which happens offline. So the classic answer, "the server assigns the number," is off the table for exactly the documents that matter most, and "wait for connectivity" means a customer standing at a loading dock, not signing.
 
 That leaves a genuinely distributed-systems problem hiding in a business-formatting feature. There are three honest strategies; most real systems need two of them side by side (chosen per document type).
 
@@ -35,7 +35,7 @@ The device must print a number now. Make the number **globally unique by constru
 
 ```
 {TENANT}-{TYPE}-{DATE}-{ENGINEER_CODE}-{PER_DEVICE_SEQ}
-e.g.  TN1-DN-20260813-E042-3
+e.g.  TN1-DR-20260813-E042-3
 ```
 
 - Uniqueness needs no coordination: the engineer code partitions the space, the local sequence orders within it.
@@ -46,7 +46,7 @@ Trade-off: numbers are not globally sequential and encode structure some back of
 
 ## Strategy C — Pre-allocated ranges (when format is non-negotiable)
 
-If policy demands office-style sequential numbers even offline: devices lease ranges from the server while online (`DN-2026-004200…004299`), mint locally from the lease, renew when low.
+If policy demands office-style sequential numbers even offline: devices lease ranges from the server while online (`DR-2026-004200…004299`), mint locally from the lease, renew when low.
 
 Works, but brings real costs: leases must be persisted and re-issued safely across reinstalls (or blocks are burned), devices offline longer than their lease runway **stop minting** (which is a hard stop for the field), and unused ranges become permanent gaps. Choose C only when B is truly unacceptable — and size leases generously.
 

@@ -16,7 +16,7 @@ This repository is my engineering playbook for that class of application: a full
 
 ## Who this is for
 
-Engineers building (or rescuing) apps where users must **create real business records without connectivity** — work orders, inspection reports, timesheets, delivery confirmations — and where losing a single record costs real money and trust. Most of it applies equally to any occasionally-connected mobile system.
+Engineers building (or rescuing) apps where users must **create real business records without connectivity** — work orders, inspection reports, timesheets, dispatch confirmations — and where losing a single record costs real money and trust. Most of it applies equally to any occasionally-connected mobile system.
 
 ## The reference domain
 
@@ -27,8 +27,8 @@ All examples use a deliberately generic field-service domain:
 | **Tenant / Region** | An operating company or country unit; data is scoped per tenant |
 | **Work order** | A job assigned to one or more field engineers |
 | **Time entry** | Hours logged against a work order |
-| **Service report** | A structured multi-page report with photos and signatures |
-| **Delivery note** | A signed confirmation of delivered goods/materials |
+| **Inspection report** | A structured multi-page report with photos and signatures |
+| **Dispatch record** | A signed confirmation of delivered goods/materials |
 | **Master data** | Reference tables (customers, sites, equipment, price lists) owned by the back office |
 
 ## Contents

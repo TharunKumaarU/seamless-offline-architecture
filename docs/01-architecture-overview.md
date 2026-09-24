@@ -96,7 +96,7 @@ Every table in the system gets classified once, up front. This single table is t
 |---|---|---|---|---|
 | Master data | customers, sites, equipment | Back office | Server → mobile (pull) | Server always wins |
 | Assignments | work orders | Back office creates, engineer executes | Bidirectional | Field-status: engineer wins; definition: office wins |
-| Engineer-owned records | time entries, service reports, delivery notes | Engineer | Mobile → server (push) | Device wins until submitted; locked after approval |
+| Engineer-owned records | time entries, inspection reports, dispatch records | Engineer | Mobile → server (push) | Device wins until submitted; locked after approval |
 | Config | tenants, roles, permissions | Admins | Server → mobile (pull) | Server always wins |
 
 ## Multi-tenant from day one

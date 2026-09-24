@@ -16,7 +16,7 @@ docker compose up
 
 ## Scope (deliberately small)
 
-**In:** two tenants; users/roles with layered permissions (doc 04); work orders (bidirectional sync); time entries + one report type — a service report with photos and signature (push-only); master data: customers + sites (pull-only, snapshot swap); document numbering strategy B (doc 05); outbox + idempotency end-to-end (docs 02–03); PDF render + email log as background jobs (docs 06–07); sync-warning feed; seeded fake data (Faker); tests as a first-class deliverable.
+**In:** two tenants; users/roles with layered permissions (doc 04); work orders (bidirectional sync); time entries + one report type — a inspection report with photos and signature (push-only); master data: customers + sites (pull-only, snapshot swap); document numbering strategy B (doc 05); outbox + idempotency end-to-end (docs 02–03); PDF render + email log as background jobs (docs 06–07); sync-warning feed; seeded fake data (Faker); tests as a first-class deliverable.
 
 **Out (documented as such):** payments/invoicing, i18n, iOS store packaging, SSO, more report types. A small complete system demonstrates more than a large half-finished one — and the omissions are stated in the README so they read as scoping, not gaps.
 
@@ -81,8 +81,8 @@ Development happens in the open: incremental conventional commits, CI green from
 | 1 | Skeleton + compose + CI + auth + tenancy | `docker compose up` → login works; isolation tests green |
 | 2 | Outbox + idempotency, time entries e2e | kill-mid-drain test green; chaos flag demo |
 | 3 | Work orders bidirectional + conflicts + parking UI | conflict scenario scripted in integration test |
-| 4 | Master-data snapshot pull + doc numbering | airplane-mode delivery-note demo with printed number |
-| 5 | Service report + photos + PDF pipeline | signed PDF artifact from fake data |
+| 4 | Master-data snapshot pull + doc numbering | airplane-mode dispatch-record demo with printed number |
+| 5 | Inspection report + photos + PDF pipeline | signed PDF artifact from fake data |
 | 6 | Sync-warning feed + monitoring profile + polish | Grafana board screenshot; README GIF |
 
 ---

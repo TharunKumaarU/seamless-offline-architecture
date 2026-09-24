@@ -52,7 +52,7 @@ sequenceDiagram
 ### Outbox rules that matter
 
 - **`op_id` is the idempotency key** and is minted exactly once, when the row is created (doc 03). Retries reuse it verbatim.
-- **Ordering is per-entity-chain, not global.** A delivery note that references a time entry declares `depends_on`; the drain never sends a child before its parent has a `server_id`. Independent chains drain in parallel.
+- **Ordering is per-entity-chain, not global.** A dispatch record that references a time entry declares `depends_on`; the drain never sends a child before its parent has a `server_id`. Independent chains drain in parallel.
 - **Distinguish retryable from parked.** 5xx/network → backoff and retry forever. 4xx → *park* the op with a reason and show it in a sync-status screen. Blind-retrying a 422 burns battery and hides bugs; silently dropping it loses data. Parking with visibility does neither.
 - **Parked ops must be revivable.** Every parked reason needs a resolution path (re-auth, edit + resubmit, admin fix server-side + retry). An op state with no exit is a data-loss bug with extra steps — audit the state machine for absorbing states.
 - **The outbox is user-visible.** A "pending uploads" count with per-item status turns "the app lost my report!" into "it says waiting for network — ok."
@@ -89,7 +89,7 @@ Soft-deletes propagate as data (`is_deleted` flags), not as absences — you can
 
 ### Push-only (engineer-owned records)
 
-Time entries, service reports, delivery notes. Devices create; the server accepts, validates, assigns server identity, and never edits content — subsequent workflow (approval, locking) changes *status*, not substance.
+Time entries, inspection reports, dispatch records. Devices create; the server accepts, validates, assigns server identity, and never edits content — subsequent workflow (approval, locking) changes *status*, not substance.
 
 The trap: **the server quietly normalizing/correcting payloads**, which makes device and server copies drift and turns every later comparison into a mystery. Validate hard, reject clearly, park visibly — don't "fix" silently.
 
